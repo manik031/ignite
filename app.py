@@ -4,6 +4,7 @@ import io
 import logging
 import os
 from io import BytesIO
+import sys
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
@@ -19,6 +20,9 @@ from image_generation import create_barbie_image, fetch_image_from_task
 from post_image_operations import add_text_and_logo_to_image_bytes
 from remove_image_background import remove_background
 from send_email import send_email
+
+# Increase the recursion limit (use with caution)
+sys.setrecursionlimit(1500)
 
 # Load environment variables from .env
 load_dotenv()
